@@ -1,0 +1,160 @@
+nav{
+    top: 0;
+}
+
+main{
+   display: grid;
+   margin-top: 4.5rem;
+}
+
+main > h1{
+    justify-self: center;
+    text-decoration: underline;
+}
+.posts{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.post-wrapper{
+    background-color:hsl(219, 32%, 12%);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.post-title{
+    font-size: 2rem;
+}
+
+.post-content{
+    font-size: 1.5rem;
+}
+
+.post-tooltip{
+    font-size: 1.2rem;
+}
+
+.post-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 0.5rem;
+    cursor: pointer;
+}
+
+.delete-btn-atag{
+    font-size: 0;
+    color: inherit;
+}
+
+.post-btn-item{
+    font-size: 1.2rem;
+}
+
+.post-name-wrapper{
+    display: flex;
+    align-items: center;
+    column-gap: 0.2rem;
+}
+
+.post-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.post-date{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+}
+
+.post-edit-comments{
+    display: grid;
+    gap: 0.8rem;
+    width: 95%;
+    height: auto;
+}
+
+.comment-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-comment,
+.comment-btn-item{
+    font-size: 1rem;
+}
+
+.post-comment{
+    max-width: 80%;
+    overflow: hidden;
+}
+
+/* Dropdown */
+.dropdown-comments{
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-comment-btn{
+    text-decoration: underline; 
+}
+
+.dropdown-menu{
+    position: absolute;
+    left: 0;
+    top: calc(100% + .25rem);
+    background-color: hsl(217, 31%, 15%);
+    padding: .75rem;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    z-index: 100;
+    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.dropdown.active > .dropdown-btn + .dropdown-menu{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* TODO form */
+.form-comment{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.form-comment > [type='text']{
+    background: none;
+    border: 2px solid hsl(219, 15%, 95%);
+    border-radius: 0.75rem;
+    outline: none;
+    padding: 0.4rem 0.5rem;
+    color: hsl(219, 15%, 95%);
+    margin-left: -0.2rem;
+}
+
+.form-comment > [type='submit']{
+    background-color: hsl(250, 66%, 75%);
+    padding: 0.4rem 0.5rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+}

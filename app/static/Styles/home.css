@@ -1,0 +1,38 @@
+main{
+    padding-top: 4.5rem;
+    display: grid;
+    place-items: center;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    width: 100%;
+    height: calc(100vh - 4.5rem);
+}
+
+.home-title{
+    font-size: 3.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.home-title.large{
+    font-size: 3.2rem;
+}
+
+.home-desc{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0;
+}
+
+.home-img{
+    aspect-ratio: 16/9;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./Blog\ writing.svg');
+}

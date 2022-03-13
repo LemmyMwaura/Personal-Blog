@@ -1,0 +1,94 @@
+nav{
+    top: 0;
+}
+
+form{
+    justify-self: center;
+}
+
+.container{
+    display: grid;
+    margin-top: 4.5rem;
+}
+
+.title{
+    text-decoration: underline;
+    justify-self: center;
+}
+
+.posts{
+    margin-top: 0;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 80vh;
+}
+
+.profile-img{
+    background-image: url(./undraw_unlock_re_a558.svg);
+    aspect-ratio: 8/8;
+    width: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.form-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-title,
+textarea{
+    background: none;
+    border: 2px solid hsl(219, 15%, 95%);
+    border-radius: 0.5rem;
+    outline: none;
+    padding: 0.4rem 0.5rem;
+    color: hsl(219, 15%, 95%);
+    width: 100%;
+    resize: none;
+}
+
+.radio-buttons{
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    width: 103.5%;
+}
+
+input[type='radio']{
+    display:none;
+}
+
+.radio-buttons > label{
+    position: relative;
+    color: hsl(219, 15%, 95%);
+    font-family: Poppins;
+    font-size: 1rem;
+    border: 3px solid hsl(219, 15%, 95%);
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    gap: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+input[type='radio']:checked + label {
+    background-color: hsl(250, 66%, 75%);
+    color: hsl(219, 48%, 8%);
+    font-weight: 500;
+}
+
+input[type='submit']{
+    background-color: hsl(250, 66%, 75%);
+    color: hsl(219, 48%, 8%);
+    padding: 0.4rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+}
