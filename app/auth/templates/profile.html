@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/posts.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/profile.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class='profile'>
+        <div class="profile-img">
+        </div>
+        <form action="" method="POST">
+            <h3>Write Your Blog Post</h3><br>
+            <div class="form-wrapper">
+                <div class="form-group">
+                    <label for="title"></label>
+                    <input class="form-control profile-title" required type="text" id="title" name="title" placeholder="Title">
+                </div>
+                <div class="radio-buttons form-group">
+                    <input type="radio" required name="category"  value="Buiness/Ecommerce" id="cat1">
+                    <label for="cat1">Buiness/Ecommerce</label>
+                    <input type="radio" name="category" value="Tech" id="cat2">
+                    <label for="cat2">Tech</label>
+                    <input type="radio" name="category" value="Games" id="cat3">
+                    <label for="cat3">Games</label>
+                    <input type="radio" name="category" value="Fashion" id="cat4">
+                    <label for="cat4">Fashion</label>
+                    <input type="radio" name="category" value="Science" id="cat5">
+                    <label for="cat5">Science</label>
+                    <input type="radio" name="category" value="Crypto/Web3" id="cat6">
+                    <label for="cat6">Crypto/Web3</label>
+                </div>
+    
+                <div class="form-group">
+                    <label for="content"></label>
+                    <textarea class="form-control" required name="content" id="content" cols="20" rows="7" placeholder="Lets hear your Pitch"></textarea>  
+                </div>
+            </div>
+            <input type="submit" class="btn submit-btn" value="Post">
+        </form>
+    </div>
+
+
+    <h1 class="title">Your Blog Posts</h1>
+        <div class="container posts">
+            {% for post in posts %}
+            <div class="post-wrapper">
+                <div class="post-header">
+                    <h1 class="post-title">{{post.title}}</h1>
+                    <div class="post-btn">
+                        <span class="post-btn-item" id="likes-count-{{post.id}}"> {{ post.likes.all()|length }}</span>
+                        {% if user.id == post.poster_id %}
+                        <i class='bx bx-like post-btn-item' id="like-button-{{post.id}}" onClick="like('{{post.id}}')"></i>
+                        <a class="delete-btn-atag" href="{{ url_for('blog.delete_post',post_id=post.id) }}"><i class='bx bx-trash post-btn-item'></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="post-content">{{post.content}}</div>
+                <div class="post-name-wrapper">
+                    <i class='bx bxs-badge-check post-tooltip'></i>
+                    <h2 class="post-author">{{ post.user.username }}</h2>
+                </div>
+                <div class="post-footer">
+                    <p class="post-category">{{post.category.name}}</p>
+                    <div class="post-date">
+                        <p class="post-date_posted">{{post.date_posted.strftime('%H:%M') }}</p>
+                        <p class="post-date_posted">{{post.date_posted.strftime('%b %dth, %Y') }}</p>
+                    </div>
+                </div>
+                <div class="dropdown dropdown-comments" data-dropdown>
+                    <a href="#" class="dropdown-comment-btn dropdown-btn" data-dropdown-button>view comments</a>
+                    <div class="post-edit-comments dropdown-menu">
+                        {% for comment in post.comments %}
+                        <div class="comment-item">
+                            <p class="post-comment">{{ comment.text }}</p>
+                            {% if user.id == comment.poster_id or user.id == post.poster_id %}
+                            <div class="comment-btn">
+                                <a class="comment-btn-item delete-btn-atag" href="{{ url_for('blog.delete_comment',comment_id=comment.id) }}"><i class='bx bx-trash post-btn-item'></i></a>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <form action="/blogs/create-comment/{{ post.id }}" method="POST" class="form-comment">
+                        <input type="text" id="text" name="text" class="form-control" placeholder="add a comment">
+                        <input type="submit" class="submit-btn" value="Add comment">
+                    </form>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+</div>
+{% endblock %}
