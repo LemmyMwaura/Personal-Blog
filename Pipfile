@@ -10,6 +10,7 @@ flask-login = "*"
 flask-migrate = "*"
 flask-sqlalchemy = "*"
 gunicorn = "*"
+requests = "*"
 
 [dev-packages]
 
