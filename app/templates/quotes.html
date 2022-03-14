@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="quote-wrapper">
+    <div class="quote">
+        <h1 class="quote-title"> {{ title }} </h1>
+        <h1> {{quote.author}} </h1>
+        <h3>
+            <blockquote><cite> "{{quote.quote}}" </cite></blockquote>
+        </h3>
+        <a class="quote-btn" href="{{url_for('blog.quotes')}}">Generate New Quote</a>
+    </div>
+</div>
+{% endblock %}

@@ -264,7 +264,8 @@ nav{
     font-weight: bold;
 }
 
-.error{
+.error,
+.quote{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -279,6 +280,34 @@ nav{
 
 .error > h3{
     font-size: 3rem;
+}
+
+.quote-wrapper{
+    display: grid;
+    height: 100vh;
+}
+
+.quote{
+    padding: 2rem;
+    background-color: hsl(219, 32%, 12%);;
+    max-width: 70%;
+    height: auto;
+    justify-self: center;
+    align-self: center;
+}
+
+.quote-title{
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+.quote-btn{
+    margin-top: 2rem;
+    background-color: hsl(250, 66%, 75%);
+    color: hsl(219, 48%, 8%);
+    padding: 0.4rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
 }
 
 /* chrome + safari custom scrollbar */
