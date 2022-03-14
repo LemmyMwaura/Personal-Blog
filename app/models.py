@@ -75,3 +75,8 @@ class Like(db.Model):
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
     post_id = db.Column(db.Integer, db.ForeignKey('blogs.id', ondelete='CASCADE'))
     author = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
+
+class Quote():
+    def __init__(self, author, quote):
+        self.author = author
+        self.quote = quote
