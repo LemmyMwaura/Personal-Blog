@@ -2,6 +2,7 @@ from app import db
 from app.models import Category, Blog, Comment, Like
 from flask import redirect, render_template, Blueprint, flash, request, url_for, jsonify
 from flask_login import current_user,login_required
+from app.request import process_quote
 
 view = Blueprint('view',__name__)
 cat = Blueprint('cat',__name__)
@@ -19,6 +20,12 @@ def home():
 
     all_categories = Category.query.order_by(Category.id)
     return render_template('index.html', user=current_user, categories=all_categories)
+
+@blog.route('/quotes')
+def quotes():
+    title='Quote'
+    quote = process_quote()
+    return render_template('quotes.html', user=current_user, quote=quote, title=title)
 
 @blog.route('/')
 def posts():

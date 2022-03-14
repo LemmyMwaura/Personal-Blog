@@ -52,7 +52,6 @@ def create_app():
 
 def create_database(app):
     with app.app_context():
-        db.drop_all()
         db.create_all()
 
 from app import views
