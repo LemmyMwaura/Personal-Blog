@@ -8,8 +8,5 @@ def get_quotes():
     return response.json()
     
 def process_quote():
-    quotes = get_quotes()
-    new_quote = Quote(quotes["author"], quotes["quote"])
-    print(new_quote)
-    return new_quote
-
+    quote = get_quotes()
+    return Quote(quote["author"], quote["quote"])
