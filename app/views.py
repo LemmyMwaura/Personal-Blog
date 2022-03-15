@@ -46,7 +46,7 @@ def delete_post(post_id):
             db.session.commit()
             flash("Blog post was deleted", category='success')
     except:
-        flash('Woops there was a problem deleting post.Try again', category='danger')
+        flash('Woops there was a problem deleting post. Try again', category='danger')
 
     title='All Blog Posts'
     all_posts = Blog.query.order_by(desc(Blog.date_posted))
