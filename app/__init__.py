@@ -12,7 +12,7 @@ mail = Mail()
 
 DB_USER='postgres'
 DB_PASS='adminlemmy'
-ENV='dev'
+ENV='Prod'
 
 def create_app():
     app = Flask(__name__)
