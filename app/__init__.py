@@ -9,7 +9,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 DB_USER='postgres'
 DB_PASS='adminlemmy'
-ENV='Prod'
+ENV='dev'
 
 def create_app():
     app = Flask(__name__)

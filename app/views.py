@@ -1,3 +1,4 @@
+from sqlalchemy import desc
 from app import db
 from app.models import Category, Blog, Comment, Like
 from flask import redirect, render_template, Blueprint, flash, request, url_for, jsonify
@@ -30,7 +31,7 @@ def quotes():
 @blog.route('/')
 def posts():
     title='All Blogs'
-    all_posts = Blog.query.order_by(Blog.date_posted)
+    all_posts = Blog.query.order_by(desc(Blog.date_posted))
     return render_template('posts.html', user=current_user, posts=all_posts, title=title)
 
 @blog.route('/delete/<int:post_id>')
@@ -48,7 +49,7 @@ def delete_post(post_id):
         flash('Woops there was a problem deleting post. Try again', category='danger')
 
     title='All Blog Posts'
-    all_posts = Blog.query.order_by(Blog.date_posted)
+    all_posts = Blog.query.order_by(desc(Blog.date_posted))
     return render_template('posts.html', user=current_user, posts=all_posts, title=title)
 
 @blog.route('/create-comment/<post_id>', methods=['GET', 'POST'])
@@ -103,35 +104,41 @@ def like(post_id):
 def bsns():
     title='Business'
     bsns_posts = Blog.query.filter_by(category_id=1)
+    bsns_posts = bsns_posts.order_by(desc(Blog.date_posted))
     return render_template('posts.html', user=current_user, posts=bsns_posts, title=title)
 
 @cat.route('/Technology')
 def tech():
     title='Technology'
     tech_posts = Blog.query.filter_by(category_id=2)
+    tech_posts = tech_posts.order_by(desc(Blog.date_posted))
     return render_template('posts.html', user=current_user, posts=tech_posts, title=title)
 
 @cat.route('/Gaming')
 def games():
     title='Gaming'
     games_posts = Blog.query.filter_by(category_id=3)
+    games_posts = games_posts.order_by(desc(Blog.date_posted))
     return render_template('posts.html', user=current_user, posts=games_posts, title=title)
 
 @cat.route('/Fashion')
 def fashion():
     title='Fashion'
     fashion_posts = Blog.query.filter_by(category_id=4)
+    fashion_posts = fashion_posts.order_by(desc(Blog.date_posted))
     return render_template('posts.html', user=current_user, posts=fashion_posts, title=title)
 
 @cat.route('/Science')
 def science():
     title='Science'
     science_posts = Blog.query.filter_by(category_id=5)
+    science_posts = science_posts.order_by(desc(Blog.date_posted))
     return render_template('posts.html', user=current_user, posts=science_posts, title=title)
 
 @cat.route('/Crypto-web3')
 def crypto():
     title='Crypto/Web-3'
     web3_posts = Blog.query.filter_by(category_id=6)
+    web3_posts = web3_posts.order_by(desc(Blog.date_posted))
     return render_template('posts.html', user=current_user, posts=web3_posts, title=title)
 

@@ -1,4 +1,5 @@
 from flask import render_template,redirect,url_for,request,flash
+from sqlalchemy import desc
 from app.auth import auth
 from app import db
 from app.models import Blog, User
@@ -96,4 +97,5 @@ def profile():
         db.session.commit()
         flash('Post created')
     user_posts = Blog.query.filter_by(poster_id=current_user.id)
+    user_posts = user_posts.order_by(desc(Blog.date_posted))
     return render_template('profile.html', user=current_user, posts=user_posts)
