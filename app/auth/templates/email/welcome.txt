@@ -1,0 +1,2 @@
+Hello {{ user.username }}
+Welcome to Blogs app. Enjoy

@@ -2,6 +2,8 @@ from flask import render_template,redirect,url_for,request,flash
 from sqlalchemy import desc
 from app.auth import auth
 from app import db
+from app import mail
+from app.mailapp import mail_message
 from app.models import Blog, User
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import current_user, login_user, logout_user, login_required
@@ -58,11 +60,17 @@ def signup():
             )
             db.session.add(new_user)
             db.session.commit()
-            flash('User created')
+            mail_message('Welcome to Blogs App',
+                                'email/welcome',
+                                new_user.email, 
+                                user=new_user
+            )
+            
+            flash(f'Hi {username}, Your Account was created', category='success')
             login_user(new_user, remember=True)
             return redirect(url_for('view.home'))
 
-    return render_template('sign_up.html', message='You have already submitted feedback', user=current_user)
+    return render_template('sign_up.html', user=current_user)
 
 @auth.route('/logout')
 @login_required

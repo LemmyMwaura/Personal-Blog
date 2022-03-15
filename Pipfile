@@ -11,6 +11,7 @@ flask-migrate = "*"
 flask-sqlalchemy = "*"
 gunicorn = "*"
 requests = "*"
+flask-mail = "*"
 
 [dev-packages]
 
