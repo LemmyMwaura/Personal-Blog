@@ -60,11 +60,11 @@ def signup():
             )
             db.session.add(new_user)
             db.session.commit()
-            mail_message('Welcome to Blogs App',
-                                'email/welcome',
-                                new_user.email, 
-                                user=new_user
-            )
+            # mail_message('Welcome to Blogs App',
+            #                     'email/welcome',
+            #                     new_user.email, 
+            #                     user=new_user
+            # )
             
             flash(f'Hi {username}, Your Account was created', category='success')
             login_user(new_user, remember=True)
